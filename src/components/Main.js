@@ -5,34 +5,27 @@ import React from 'react';
 import Nav from './Nav/Nav';
 import RenderMap from './Map/RenderMap';
 
-var lat = '';
-var lng = '';
-navigator.geolocation.getCurrentPosition(function(position) {
-  lat = position.coords.latitude;
-  lng = position.coords.longitude;
-  console.log(lat);
-  console.log(lng);
-});
-
 class AppComponent extends React.Component {
-
   constructor() {
     super();
     this.state = {
-      userData: {
-          id: ''
-        , user: ''
-        , email: ''
-        , password: ''
-      },
-      map: {
-          lat: ''
-        , lng: ''
-      }
+        id: ''
+      , user: ''
+      , email: ''
+      , password: ''
+      , lat: ''
+      , lng: ''
     };
   }
 
   render() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      this.setState({ lat: position.coords.latitude });
+      this.setState({ lng: position.coords.longitude });
+      console.log(this.state.userData.lat);
+      console.log(this.state.userData.lng);
+    });
+
     return (
       <div className="index">
         <Nav />

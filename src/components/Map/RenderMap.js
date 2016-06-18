@@ -1,5 +1,5 @@
 import React from 'react';
-import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
+import {Gmaps, Marker, InfoWindow} from 'react-gmaps';
 
 const RenderMap = React.createClass({
 
