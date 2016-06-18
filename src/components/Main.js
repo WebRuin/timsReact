@@ -36,7 +36,7 @@ class AppComponent extends React.Component {
     return (
       <div className="index">
         <Nav />
-        <RenderMap lat={lat} lng={lng} />
+        <RenderMap lat='37.7749295' lng='-122.41941550000001' />
       </div>
     );
   }

@@ -38,15 +38,11 @@ const RenderMap = React.createClass({
           draggable={true}
           onDragEnd={this.onDragEnd} />
         <InfoWindow
-          lat={this.props.lat}
+          lat={this.props.lat + 5}
           lng={this.props.lng}
+          className='mapInfo'
           content={'Hello, React :)'}
           onCloseClick={this.onCloseClick} />
-        <Circle
-          lat={this.props.lat}
-          lng={this.props.lng}
-          radius={500}
-          onClick={this.onClick} />
       </Gmaps>
     );
   }
