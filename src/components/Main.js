@@ -13,18 +13,10 @@ class AppComponent extends React.Component {
       , user: ''
       , email: ''
       , password: ''
-      , lat: ''
-      , lng: ''
     };
   }
 
   render() {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      this.setState({ lat: position.coords.latitude });
-      this.setState({ lng: position.coords.longitude });
-      console.log(this.state.userData.lat);
-      console.log(this.state.userData.lng);
-    });
 
     return (
       <div className="index">
