@@ -2,15 +2,24 @@ require('normalize.css/normalize.css');
 require('styles/App.css');
 
 import React from 'react';
-
-let yeomanImage = require('../images/yeoman.png');
+import Nav from './Nav/Nav';
 
 class AppComponent extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
+      id: '',
+      user: '',
+      email: '',
+      password: ''
+    };
+  }
+
   render() {
     return (
       <div className="index">
-        <img src={yeomanImage} alt="Yeoman Generator" />
-        <div className="notice">Please edit <code>src/components/Main.js</code> to get started!</div>
+        <Nav />
       </div>
     );
   }

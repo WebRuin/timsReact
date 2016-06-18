@@ -1,0 +1,35 @@
+.account-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  margin: 0 -10px 0 auto;
+}
+
+.account-dropdown {
+  ul {
+    // hide dropdown at first
+    display: none;
+  }
+}
+
+.user--btn--dropdown {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  background: inherit;
+  padding: 20px;
+  display: inline-block;
+  border: none;
+
+  &:hover {
+    color: #fff;
+    background: darken(#fff, 85%);
+  }
+}
+
+input[type=checkbox] {
+}
+
+input[type=checkbox]:checked ~ ul {
+  display: block;
+}
