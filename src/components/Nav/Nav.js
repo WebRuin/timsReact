@@ -12,12 +12,12 @@ class Nav extends React.Component {
 
     return (
         <header className="site-header">
-          <a href="#0" className="logo">Tinge</a>
+          <a href="#0" className="logo">GottaGo!</a>
           <nav className="site-nav">
             <ul>
-              <li className="active"><a href="#0">Revenue</a></li>
-              <li><a href="#0">Churn</a></li>
-              <li><a href="#0">Customer</a></li>
+              <li className="active"><a href="#0">Map</a></li>
+              <li><a href="#0">List</a></li>
+              <li><a href="#0">About</a></li>
             </ul>
           </nav>
           <AccountActions name={user} />

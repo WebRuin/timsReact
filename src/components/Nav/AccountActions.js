@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import Login from './LoginBtn'
+import Login from './LoginBtn';
 
 require('styles/Nav/AccountActions.scss');
 
@@ -18,10 +18,9 @@ class AccountActions extends React.Component {
       <div className="account-actions">
         <div className="account-dropdown">
           <button className="user--btn--dropdown">
-            <input type="checkbox" />
             {this.props.name}
           </button>
-          <ul>
+          <ul className="form--dropdown">
             <li>Your Account</li>
           </ul>
         </div>

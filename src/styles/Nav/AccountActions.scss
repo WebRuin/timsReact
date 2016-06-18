@@ -2,7 +2,6 @@
   margin-left: auto;
   display: flex;
   align-items: center;
-  margin: 0 -10px 0 auto;
 }
 
 .account-dropdown {
@@ -10,6 +9,10 @@
     // hide dropdown at first
     display: none;
   }
+}
+
+.account-dropdown ul.down {
+  display: block;
 }
 
 .user--btn--dropdown {

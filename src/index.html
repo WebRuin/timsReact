@@ -13,5 +13,16 @@
 
   <script>__REACT_DEVTOOLS_GLOBAL_HOOK__ = parent.__REACT_DEVTOOLS_GLOBAL_HOOK__</script>
   <script type="text/javascript" src="/assets/app.js"></script>
+  <script src="https://code.jquery.com/jquery-3.0.0.min.js"
+          integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="
+          crossorigin="anonymous">
+  </script>
+  <script>
+    (function($, window, document) {
+      $('.user--btn--dropdown').on('click', function (e) {
+        $('.form--dropdown').toggleClass("down");
+      });
+    }(window.jQuery, window, document));
+  </script>
 </body>
 </html>
