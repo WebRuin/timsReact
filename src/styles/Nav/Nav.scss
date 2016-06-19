@@ -45,11 +45,9 @@ body {
     padding: 20px;
     display: inline-block;
   }
-  .active {
-    a {
-      font-weight: bold;
-      color: #62DEBE;
-      background: darken(#62DEBE, 40%);
-    }
+  a.active {
+    font-weight: bold;
+    color: #62DEBE;
+    background: darken(#62DEBE, 40%);
   }
 }

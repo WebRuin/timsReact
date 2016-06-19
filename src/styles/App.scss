@@ -1,4 +1,13 @@
 /* Base Application Styles */
+
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   color: #fff;
   background: #222;
@@ -18,4 +27,9 @@ body {
   border: 1px solid #000;
   border-width: 1px 0;
   background: #666;
+}
+
+.page {
+  height: calc(100vh - 59px);
+  padding: 1.5rem 1rem 1rem 1rem;
 }
