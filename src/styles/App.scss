@@ -29,6 +29,11 @@ body {
   background: #666;
 }
 
+.index {
+  height: calc(100% - 59px);
+  width: 100vw;
+}
+
 .page {
   height: calc(100vh - 59px);
   padding: 1.5rem 1rem 1rem 1rem;

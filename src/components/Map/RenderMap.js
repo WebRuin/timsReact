@@ -9,23 +9,23 @@ const RenderMap = React.createClass({
     });
   },
 
-  onDragEnd(e) {
-    console.log('onDragEnd', e);
-  },
-
-  onCloseClick() {
-    console.log('onCloseClick');
-  },
-
-  onClick(e) {
-    console.log('onClick', e);
-  },
+  // onDragEnd(e) {
+  //   console.log('onDragEnd', e);
+  // },
+  //
+  // onCloseClick() {
+  //   console.log('onCloseClick');
+  // },
+  //
+  // onClick(e) {
+  //   console.log('onClick', e);
+  // },
 
   render() {
     return (
       <Gmaps
         width={'100vw'}
-        height={'100vh'}
+        height={'calc(100vh - 59px)'}
         lat={this.props.lat}
         lng={this.props.lng}
         zoom={12}
