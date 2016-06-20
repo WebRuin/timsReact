@@ -84,18 +84,20 @@ npm install
 ####Start Dev Server
 `npm server`
 
-`npm run clean`
-`npm run copy`
-`npm run dist`
-`npm run lint`
-`npm run posttest`
-`npm run release:major`
-`npm run release:patch`
-`npm run serve`
-`npm run serve:dist`
-`npm run start`
-`npm run test`
-`npm run test:watch`
+```js
+npm run clean
+npm run copy
+npm run dist
+npm run lint
+npm run posttest
+npm run release:major
+npm run release:patch
+npm run serve
+npm run serve:dist
+npm run start
+npm run test
+npm run test:watch
+```
 
 **[Back to top](#table-of-contents)**
 
