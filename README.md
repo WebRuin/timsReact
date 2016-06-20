@@ -15,15 +15,18 @@ Intro section
 
 #### Core Dependencies
 
+```js
   "core-js": "^2.0.0",
   "normalize.css": "^4.0.0",
   "react": "^15.0.0",
   "react-dom": "^15.0.0"
+```
 
 --
 
 #### Dev Dependencies
 
+```js
   "babel-core": "^6.0.0",
   "babel-eslint": "^6.0.0",
   "babel-loader": "^6.0.0",
@@ -67,6 +70,7 @@ Intro section
   "url-loader": "^0.5.6",
   "webpack": "^1.12.0",
   "webpack-dev-server": "^1.14.1"
+```
 
 ### Installation
 
