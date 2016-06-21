@@ -3,7 +3,7 @@ require('styles/App.scss');
 
 import React from 'react';
 
-import Nav from './Nav/Nav';
+import NavBar from './Nav/NavBar';
 
 class AppComponent extends React.Component {
   constructor() {
@@ -20,7 +20,7 @@ class AppComponent extends React.Component {
 
     return (
       <div className="index">
-        <Nav />
+        <NavBar />
         {this.props.children}
       </div>
     );

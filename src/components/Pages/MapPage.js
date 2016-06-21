@@ -1,11 +1,13 @@
-require('normalize.css/normalize.css');
-require('styles/App.scss');
+'use strict';
 
 import React from 'react';
 
 import RenderMap from '../Map/RenderMap';
 
-class AppComponent extends React.Component {
+require('normalize.css/normalize.css');
+require('styles/App.scss');
+
+export default class AppComponent extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -25,8 +27,3 @@ class AppComponent extends React.Component {
     );
   }
 }
-
-AppComponent.defaultProps = {
-};
-
-export default AppComponent;
