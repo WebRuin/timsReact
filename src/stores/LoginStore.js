@@ -1,8 +1,9 @@
-import { EventEmitter } from 'events';
+'use strict';
 
+import { EventEmitter } from 'events';
 import dispatcher from '../dispatcher';
 
-class LoginStore extends EventEmitter {
+export default class LoginStore extends EventEmitter {
   constructor() {
     super()
     this.users = [
@@ -56,5 +57,3 @@ class LoginStore extends EventEmitter {
 
 const loginStore = new LoginStore;
 dispatcher.register(loginStore.handleActions.bind(loginStore));
-
-export default loginStore;

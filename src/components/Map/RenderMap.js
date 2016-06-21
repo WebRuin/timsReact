@@ -1,25 +1,27 @@
+'use strict';
+
 import React from 'react';
 import {Gmaps, Marker, InfoWindow} from 'react-gmaps';
 
-const RenderMap = React.createClass({
+export default class RenderMap extends React.Component {
 
   onMapCreated(map) {
     map.setOptions({
       disableDefaultUI: true
     });
-  },
 
   // onDragEnd(e) {
   //   console.log('onDragEnd', e);
-  // },
+  // }
   //
   // onCloseClick() {
   //   console.log('onCloseClick');
-  // },
+  // }
   //
   // onClick(e) {
   //   console.log('onClick', e);
-  // },
+  // }
+  }
 
   render() {
     return (
@@ -46,7 +48,4 @@ const RenderMap = React.createClass({
       </Gmaps>
     );
   }
-
-});
-
-export default RenderMap;
+}

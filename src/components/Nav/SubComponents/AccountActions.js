@@ -7,7 +7,7 @@ import LoginStore from '../../stores/LoginStore';
 
 require('styles/Nav/AccountActions.scss');
 
-class AccountActions extends React.Component {
+export default class AccountActions extends React.Component {
   constructor() {
     super();
     this.user = this.getLogin.bind(this);
@@ -73,11 +73,3 @@ class AccountActions extends React.Component {
     )
   }
 }
-
-AccountActions.displayName = 'AccountActions';
-
-// Uncomment properties you need
-// NavComponent.propTypes = {};
-// NavComponent.defaultProps = {};
-
-export default AccountActions;
