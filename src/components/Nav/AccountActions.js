@@ -2,33 +2,45 @@
 
 import React from 'react';
 import Login from './LoginBtn';
+import * as LoginActions from '../../actions/LoginActions';
+import LoginStore from '../../stores/LoginStore';
 
 require('styles/Nav/AccountActions.scss');
 
 class AccountActions extends React.Component {
   constructor() {
     super();
+    this.user = this.getLogin.bind(this);
     this.state = {
-        id: ''
-      , user: 'Welcome!'
-      , email: ''
-      , password: ''
+      user: LoginStore.getAll()
     };
   }
 
-  handleUserChange(e) {
-    const user = e.target.value;
-    this.changeUser(user)
+  componentWillMount() {
+    LoginStore.on('change', this.getLogin);
   }
 
-  updateUserData(e){
+  componentWillUnmount() {
+    LoginStore.removeListener('change', this.getLogin);
+  }
+
+  getLogin() {
+    this.setState({
+      users: LoginStore.getAll()
+    });
+  }
+
+  getFormData(e) {
     e.preventDefault();
-    this.refs.changeUserName.reset();
+
+    user: this.refs.userName.value
+    email: this.refs.userEmail.value
+    password: this.refs.userPass.value
+    console.log('user: ' + this.user)
+
+    LoginStore.createUser(this.user, this.email, this.password)
   }
 
-  changeUser(user) {
-    this.setState({user})
-  }
   render () {
     // Replace with database connection
     function isLoggedin() {
@@ -36,17 +48,20 @@ class AccountActions extends React.Component {
         false
       )
     }
+
     return (
-      <div className="account-actions">
-        <div className="account-dropdown">
-          <button className="user--btn--dropdown">
-            {this.state.user}
+      <div className='account-actions'>
+        <div className='account-dropdown'>
+          <button className='user--btn--dropdown'>
+            Hi
           </button>
-          <ul className="form--dropdown">
+          <ul className='form--dropdown'>
             <li>Your Account</li>
-            <form ref='changeUserName' onSubmit={this.updateUserData.bind(this)}>
-              <input onChange={this.handleUserChange.bind(this)} />
-              <button type="submit">Update</button>
+            <form onSubmit={this.getFormData.bind(this)}>
+              <input ref='userName' placeholder='Your Name' />
+              <input ref='userEmail' placeholder='Your Email' />
+              <input ref='userPass' placeholder='Password' />
+              <button type='submit'>Update</button>
             </form>
             <pre>
               {JSON.stringify(this.state, null, 2)}

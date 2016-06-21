@@ -17,7 +17,6 @@
   position: absolute;
   right: 0;
   background: lighten(#0D1313, 5%);
-  width: 25vw;
   padding: 1rem;
   margin: 0;
   z-index: 1;
@@ -36,7 +35,7 @@
   text-decoration: none;
   color: #fff;
   background: inherit;
-  padding: 0 1.5rem;
+  padding: 20px;
   display: inline-block;
   border: none;
 
@@ -46,9 +45,6 @@
   }
 }
 
-input[type=checkbox] {
-}
-
-input[type=checkbox]:checked ~ ul {
-  display: block;
+input {
+  
 }
