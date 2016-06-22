@@ -11,13 +11,13 @@ export default class LoginStore extends EventEmitter {
           id: '1'
         , user: 'Welcome!'
         , email: ''
-        , password: ''
+        , password: '999999'
       },
       {
           id: '1466448693560'
         , user: 'Tim Smith'
         , email: 'tim.smith.hdg@gmail.com'
-        , password: 'WSX23xc9'
+        , password: '999999'
       }
     ];
   }
@@ -37,6 +37,7 @@ export default class LoginStore extends EventEmitter {
   }
 
   getAll() {
+    alert('user: ' + this.users)
     return this.users;
   }
 
@@ -57,3 +58,5 @@ export default class LoginStore extends EventEmitter {
 
 const loginStore = new LoginStore;
 dispatcher.register(loginStore.handleActions.bind(loginStore));
+
+export default LoginStore;
