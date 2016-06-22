@@ -40,9 +40,14 @@
   display: inline-block;
   border: none;
 
+  &:focus {outline:0;}
+
   &:hover {
     color: #fff;
-    background: darken(#fff, 85%);
+    background: lighten(#0D1313, 5%);
+  }
+  &.grey {
+    background: lighten(#0D1313, 5%);
   }
 }
 
