@@ -14,6 +14,16 @@
   left: 999px;
 }
 
+.hasDropdown{
+  position: relative;
+  &:after {
+    position: absolute;
+    color: #999;
+    content: '▼';
+    right: 0;
+    bottom: 0;
+  }
+}
 .account-dropdown {
   ul {
     // hide dropdown at first

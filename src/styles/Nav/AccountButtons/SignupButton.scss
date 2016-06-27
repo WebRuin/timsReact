@@ -18,6 +18,29 @@
 .signup--dropdown {
   // hide dropdown at first
   display: none;
+
+  input {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+  }
+
+  button.signup--btn {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #CDD0D0;
+    background: #14604c;
+    padding: 0.5rem;
+    display: inline-block;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+
+    &:hover {
+      color: #62DEBE;
+      background: darken(#62DEBE, 50%);
+    }
+  }
 }
 
 .signup--dropdown.down {
