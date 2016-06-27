@@ -24,6 +24,16 @@
   list-style-type: none;
 }
 
+.shown {
+  position: relative;
+  left: 0;
+}
+
+.hidden {
+  position: absolute;
+  left: 230px;
+}
+
 @media (max-width: 600px) {
   .account-dropdown ul.down {
     width: 100vw;

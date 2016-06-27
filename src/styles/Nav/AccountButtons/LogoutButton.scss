@@ -1,0 +1,15 @@
+.logout--btn {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #CDD0D0;
+  background: #14604c;
+  padding: 20px;
+  display: inline-block;
+  border: 0;
+  outline: 0;
+
+  &:hover {
+    color: #62DEBE;
+    background: darken(#62DEBE, 50%);
+  }
+}
