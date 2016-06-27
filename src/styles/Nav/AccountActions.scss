@@ -4,6 +4,15 @@
   align-items: center;
   position: relative;
 }
+.shown {
+  position: relative;
+  left: 0;
+}
+
+.hidden {
+  position: absolute;
+  left: 999px;
+}
 
 .account-dropdown {
   ul {
@@ -24,16 +33,6 @@
   list-style-type: none;
 }
 
-.shown {
-  position: relative;
-  left: 0;
-}
-
-.hidden {
-  position: absolute;
-  left: 230px;
-}
-
 @media (max-width: 600px) {
   .account-dropdown ul.down {
     width: 100vw;
@@ -49,6 +48,7 @@
   padding: 20px;
   display: inline-block;
   border: none;
+  cursor: pointer;
 
   &:focus {outline:0;}
 
@@ -59,11 +59,4 @@
   &.grey {
     background: lighten(#0D1313, 5%);
   }
-}
-
-input[type=checkbox] {
-}
-
-input[type=checkbox]:checked ~ ul {
-  display: block;
 }

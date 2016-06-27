@@ -52,26 +52,32 @@ export default class AccountActions extends React.Component {
       'login-group hidden': !this.state.loggedOut
     });
     return (
-      <section className="account-actions">
-        <div className="account-dropdown">
-          <button className="user--btn--dropdown">
+      <section className='account-actions'>
+        <div className='account-dropdown'>
+          <button className='user--btn--dropdown'>
             {this.state.user}
           </button>
-          <ul className="form--dropdown">
+          <ul className='form--dropdown'>
             <li>Your Account</li>
             <form ref='changeUserName' onSubmit={this.updateUserData.bind(this)}>
               <input onChange={this.handleUserChange.bind(this)} />
-              <button type="submit">Update</button>
+              <button type='submit'>Update</button>
             </form>
-            <pre>
-              {JSON.stringify(this.state, null, 2)}
-            </pre>
           </ul>
         </div>
         <div className='button-group'>
           <div className={loggedInClass}>
             <button className='login--btn' onClick={this.login.bind(this)}>Login</button>
-            <a href="#0" className='signup--btn'>Signup</a>
+            <button className='signup--btn'>Signup</button>
+            <ul className='signup--dropdown'>
+              <form ref='changeUserName' onSubmit={this.updateUserData.bind(this)}>
+                <input onChange={this.handleUserChange.bind(this)} />
+                <button type='submit'>Update</button>
+              </form>
+              <pre>
+                {JSON.stringify(this.state, null, 2)}
+              </pre>
+            </ul>
           </div>
           <div className={loggedOutClass}>
             <button className='logout--btn' onClick={this.logout.bind(this)}>Logout</button>

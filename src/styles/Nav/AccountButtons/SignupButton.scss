@@ -5,9 +5,57 @@
   background: #14604c;
   padding: 20px;
   display: inline-block;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
 
   &:hover {
     color: #62DEBE;
     background: darken(#62DEBE, 50%);
+  }
+}
+
+.signup--dropdown {
+  // hide dropdown at first
+  display: none;
+}
+
+.signup--dropdown.down {
+  display: block;
+  position: absolute;
+  right: 0;
+  background: lighten(#0D1313, 5%);
+  width: 25vw;
+  padding: 1rem;
+  margin: 0;
+  z-index: 1;
+  list-style-type: none;
+}
+
+@media (max-width: 600px) {
+  .signup--btn ul.down {
+    width: 100vw;
+    padding: 1rem;
+  }
+}
+
+.user--btn--dropdown {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  background: inherit;
+  padding: 20px;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+
+  &:focus {outline:0;}
+
+  &:hover {
+    color: #fff;
+    background: lighten(#0D1313, 5%);
+  }
+  &.grey {
+    background: lighten(#0D1313, 5%);
   }
 }
