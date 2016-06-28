@@ -15,7 +15,7 @@ export default class RenderMap extends React.Component {
     return (
       <Gmaps
         width={'100vw'}
-        height={'100vh'}
+        height={'calc(100vh - 59px)'}
         lat={this.props.lat}
         lng={this.props.lng}
         zoom={12}

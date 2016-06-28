@@ -13,11 +13,32 @@ export default class AccountActions extends React.Component {
     super();
     this.state = {
         email: ''
+      , signupDropDownIsOpen : false
+      , userDropDownIsOpen : false
       , id: ''
       , loggedOut: true
       , password: ''
       , user: 'Welcome!'
     };
+  }
+
+  // SIGNUP DROPDOWN
+  handleUserClick() {
+    this.setState({
+      userDropDownIsOpen : !this.state.userDropDownIsOpen
+    });
+  }
+  renderUserDropdown() {
+    return (
+      <div className='form--dropdown'>
+        <ul>
+          <li><span className='highlighed'>Your Account</span></li>
+          <li>{this.state.user}</li>
+          <li>{this.state.email}</li>
+          <li>{this.state.password}</li>
+        </ul>
+      </div>
+    );
   }
 
   login() {
@@ -31,17 +52,17 @@ export default class AccountActions extends React.Component {
   handleSignup(e) {
     e.preventDefault()
 
-    // var email = this.refs.email
-    // var password = this.refs.password
-    // var user = this.refs.username
-    //
-    // this.setState({email, password, user})
-
-    this.setState({ loggedOut: false })
+    this.setState({
+      email: this.refs.email.value,
+      password: this.refs.password.value,
+      user: this.refs.username.value,
+      loggedOut: false
+    })
 
     this.refs.signupForm.reset()
   }
 
+  // USER STUFF
   handleUserChange(e) {
     const user = e.target.value;
     this.changeUser(user)
@@ -56,6 +77,8 @@ export default class AccountActions extends React.Component {
     this.setState({user})
   }
   render () {
+    var userDropdown = this.state.userDropDownIsOpen ? this.renderUserDropdown() : null;
+    var userDropdownClass = this.state.loggedOut ? 'user--btn--dropdown' : 'user--btn--dropdown hasDropdown'
     // Replace with database connection
     // SIGNIN/SIGNOUT
     var loggedOutClass = classNames({
@@ -66,38 +89,15 @@ export default class AccountActions extends React.Component {
       'login-group shown hasDropdown': this.state.loggedOut,
       'login-group hidden': !this.state.loggedOut
     });
-    // USER
-    var userLoggedOutClass = classNames({
-      'userLoggedOut-group hidden': this.state.loggedOut,
-      'userLoggedOut-group shown hasDropdown': !this.state.loggedOut
-    });
-    var userLoggedInClass = classNames({
-      'userLoggedIn-group shown': this.state.loggedOut,
-      'userLoggedIn-group hidden': !this.state.loggedOut
-    });
     return (
       <section className='account-actions'>
-        <div>
-          <section className={userLoggedInClass}>
-            <div className='account-dropdown'>
-              <button className='user--btn--dropdown'>
-                {this.state.user}
-              </button>
-            </div>
-          </section>
-          <section className={userLoggedOutClass}>
-            <div className='account-dropdown'>
-              <button className='user--btn--dropdown'>
-                {this.state.user}
-              </button>
-              <ul className='form--dropdown'>
-                <li>Your Account</li>
-                <li>{this.state.user}</li>
-                <li>{this.state.email}</li>
-                <li>{this.state.password}</li>
-              </ul>
-            </div>
-          </section>
+        <div className='userLoggedOut-group'>
+          <div className='account-dropdown'>
+            <button className={userDropdownClass} onClick={this.handleUserClick.bind(this)}>
+              {this.state.user}
+            </button>
+            {userDropdown}
+          </div>
         </div>
         <div className='button-group'>
           <div className={loggedInClass}>

@@ -10,8 +10,14 @@
 }
 
 .hidden {
+  display: none;
   position: absolute;
   left: 999px;
+}
+
+.highlighed {
+  font-weight: bold;
+  color: #62DEBE;
 }
 
 .hasDropdown{
@@ -25,22 +31,24 @@
   }
 }
 .account-dropdown {
-  ul {
-    // hide dropdown at first
-    display: none;
+  .form--dropdown {
+    display: block;
+    position: absolute;
+    right: 0;
+    background: lighten(#0D1313, 5%);
+    width: 25vw;
+    padding: 1rem;
+    margin: 0;
+    z-index: 1;
+    list-style-type: none;
+    ul {
+      list-style-type: none;
+      padding-left: 0.75rem;
+      li {
+        margin: 0.25rem;
+      }
+    }
   }
-}
-
-.account-dropdown ul.down {
-  display: block;
-  position: absolute;
-  right: 0;
-  background: lighten(#0D1313, 5%);
-  width: 25vw;
-  padding: 1rem;
-  margin: 0;
-  z-index: 1;
-  list-style-type: none;
 }
 
 @media (max-width: 600px) {
