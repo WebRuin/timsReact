@@ -32,15 +32,25 @@ export default class AccountActions extends React.Component {
     });
   }
   renderUserDropdown() {
-    return (
-      <div className='form--dropdown'>
-        <ul>
-          <li><span className='highlighed'>Your Account Info</span></li>
-          <li><span className='list--lable'>Username:</span> {this.state.user}</li>
-          <li><span className='list--lable'>Email:</span> {this.state.email}</li>
-        </ul>
-      </div>
-    );
+    if (this.state.id === '') {
+      return (
+        <div className='form--dropdown'>
+          <h1 className='highlighed'>Welcome!</h1>
+          <p>Please please login</p>
+           <pre>{JSON.stringify(this.state, null, 2)}</pre>
+        </div>
+      )
+    } else {
+      return (
+        <div className='form--dropdown'>
+          <ul>
+            <li><span className='highlighed'>Your Account Info</span></li>
+            <li><span className='list--lable'>Username:</span> {this.state.user}</li>
+            <li><span className='list--lable'>Email:</span> {this.state.email}</li>
+          </ul>
+        </div>
+      )
+    }
   }
 
   login() {
@@ -64,6 +74,7 @@ export default class AccountActions extends React.Component {
 
     this.setState({
       email: this.refs.email.value,
+      id: Math.floor(Math.random()*1000000),
       password: this.refs.password.value,
       user: this.refs.username.value,
       loggedOut: false
