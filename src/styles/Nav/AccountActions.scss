@@ -16,8 +16,16 @@
 }
 
 .highlighed {
+  font-size: 1.25rem;
   font-weight: bold;
   color: #62DEBE;
+  margin: -5px 0 0.75rem 0;
+  display: inline-block;
+}
+
+.list--lable {
+  font-weight: bold;
+  color: darken(#62DEBE, 30%);
 }
 
 .hasDropdown{

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import classNames from 'classnames';
+import LocalStorageMixin from 'react-localstorage';
 
 require('styles/Nav/AccountActions.scss');
 require('styles/Nav/AccountButtons/LoginButton.scss');
@@ -9,6 +10,8 @@ require('styles/Nav/AccountButtons/LogoutButton.scss');
 require('styles/Nav/AccountButtons/SignupButton.scss');
 
 export default class AccountActions extends React.Component {
+  mixins: [LocalStorageMixin]
+
   constructor() {
     super();
     this.state = {
@@ -32,10 +35,9 @@ export default class AccountActions extends React.Component {
     return (
       <div className='form--dropdown'>
         <ul>
-          <li><span className='highlighed'>Your Account</span></li>
-          <li>{this.state.user}</li>
-          <li>{this.state.email}</li>
-          <li>{this.state.password}</li>
+          <li><span className='highlighed'>Your Account Info</span></li>
+          <li><span className='list--lable'>Username:</span> {this.state.user}</li>
+          <li><span className='list--lable'>Email:</span> {this.state.email}</li>
         </ul>
       </div>
     );
@@ -46,7 +48,15 @@ export default class AccountActions extends React.Component {
   }
 
   logout() {
-    this.setState({ loggedOut: true })
+    this.setState({
+        email: ''
+      , signupDropDownIsOpen : false
+      , userDropDownIsOpen : false
+      , id: ''
+      , loggedOut: true
+      , password: ''
+      , user: 'Welcome!'
+    })
   }
 
   handleSignup(e) {
