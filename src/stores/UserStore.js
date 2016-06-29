@@ -3,23 +3,24 @@
 import { EventEmitter } from 'events';
 import dispatcher from '../dispatcher';
 
-export default class LoginStore extends EventEmitter {
+export default class UserStore extends EventEmitter {
   constructor() {
     super()
     this.users = [
       {
-          id: '1'
-        , user: 'Welcome!'
-        , email: ''
+          email: ''
+        , signupDropDownIsOpen : false
+        , userDropDownIsOpen : false
+        , id: ''
+        , loggedOut: true
         , password: ''
-      },
-      {
-          id: '1466448693560'
-        , user: 'Tim Smith'
-        , email: 'tim.smith.hdg@gmail.com'
-        , password: 'WSX23xc9'
+        , user: 'Welcome!'
       }
     ];
+  }
+
+  getAll() {
+    return this.users;
   }
 
   createUser(user, email, password) {
@@ -36,18 +37,10 @@ export default class LoginStore extends EventEmitter {
     this.emit('change');
   }
 
-  getAll() {
-    return this.users;
-  }
-
   handleActions(action) {
     switch(action.type) {
       case 'CREATE_USER': {
         this.createUser(action.text);
-        break;
-      }
-      case 'FIND_USER': {
-        // graphQL Stuff
         break;
       }
     }
@@ -55,5 +48,5 @@ export default class LoginStore extends EventEmitter {
 
 }
 
-const loginStore = new LoginStore;
-dispatcher.register(loginStore.handleActions.bind(loginStore));
+const userStore = new UserStore;
+dispatcher.register(userStore.handleActions.bind(userStore));

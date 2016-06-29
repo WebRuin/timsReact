@@ -1,13 +1,16 @@
 'use strict';
 
-import React from 'react';
-import classNames from 'classnames';
-import LocalStorageMixin from 'react-localstorage';
+import React from 'react'
+import classNames from 'classnames'
+import LocalStorageMixin from 'react-localstorage'
+// UserStore
+import UserStore from '../../../stores/UserStore'
 
-require('styles/Nav/AccountActions.scss');
-require('styles/Nav/AccountButtons/LoginButton.scss');
-require('styles/Nav/AccountButtons/LogoutButton.scss');
-require('styles/Nav/AccountButtons/SignupButton.scss');
+
+require('styles/Nav/AccountActions.scss')
+require('styles/Nav/AccountButtons/LoginButton.scss')
+require('styles/Nav/AccountButtons/LogoutButton.scss')
+require('styles/Nav/AccountButtons/SignupButton.scss')
 
 export default class AccountActions extends React.Component {
   mixins: [LocalStorageMixin]
@@ -15,20 +18,14 @@ export default class AccountActions extends React.Component {
   constructor() {
     super();
     this.state = {
-        email: ''
-      , signupDropDownIsOpen : false
-      , userDropDownIsOpen : false
-      , id: ''
-      , loggedOut: true
-      , password: ''
-      , user: 'Welcome!'
-    };
+      users: UserStore.getAll()
+    }
   }
 
   // SIGNUP DROPDOWN
   handleUserClick() {
     this.setState({
-      userDropDownIsOpen : !this.state.userDropDownIsOpen
+      userDropDownIsOpen : !this.state.users.userDropDownIsOpen
     });
   }
   renderUserDropdown() {
