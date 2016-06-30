@@ -1,10 +1,11 @@
 'use strict';
 
-import React from 'react'
+import React from 'react';
+
 import classNames from 'classnames'
 import LocalStorageMixin from 'react-localstorage'
-// UserStore
 import UserStore from '../../../stores/UserStore'
+import * as UserActions from '../../../actions/UserActions'
 
 
 require('styles/Nav/AccountActions.scss')
@@ -18,23 +19,51 @@ export default class AccountActions extends React.Component {
   constructor() {
     super();
     this.state = {
-      users: UserStore.getAll()
+      ui: UserStore.getUI(),
+      users: UserStore.getAllUsers()
     }
+
+    this.currentUser = {
+        email: ''
+      , id: ''
+      , password: ''
+      , user: 'Welcome!'
+    }
+  }
+
+  componentWillMount() {
+    UserStore.on('change', this.getUsers)
+    UserStore.on('change', this.getUI)
+  }
+
+  componentWillUnmount() {
+    UserStore.removeListener('change', this.getUsers)
+    UserStore.removeListener('change', this.getUI)
+  }
+
+  getUsers() {
+    this.setState({
+      users: UserStore.getAllUsers()
+    });
+  }
+
+  getUI() {
+    this.setState({
+      ui: UserStore.getUI()
+    });
   }
 
   // SIGNUP DROPDOWN
   handleUserClick() {
-    this.setState({
-      userDropDownIsOpen : !this.state.users.userDropDownIsOpen
-    });
+    UserActions.dropdownClicked()
   }
   renderUserDropdown() {
-    if (this.state.id === '') {
+    if (this.state.users.id === '') {
       return (
         <div className='form--dropdown'>
           <h1 className='highlighed'>Welcome!</h1>
           <p>Please please login</p>
-           <pre>{JSON.stringify(this.state, null, 2)}</pre>
+          <pre>{JSON.stringify(this.state, null, 2)}</pre>
         </div>
       )
     } else {
@@ -42,48 +71,39 @@ export default class AccountActions extends React.Component {
         <div className='form--dropdown'>
           <ul>
             <li><span className='highlighed'>Your Account Info</span></li>
-            <li><span className='list--lable'>Username:</span> {this.state.user}</li>
-            <li><span className='list--lable'>Email:</span> {this.state.email}</li>
+            <li><span className='list--lable'>Username:</span> {this.currentUser.user}</li>
+            <li><span className='list--lable'>Email:</span> {this.currentUser.email}</li>
           </ul>
         </div>
       )
     }
   }
 
-  login() {
-    this.setState({ loggedOut: false })
-  }
-
-  logout() {
-    this.setState({
-        email: ''
-      , signupDropDownIsOpen : false
-      , userDropDownIsOpen : false
-      , id: ''
-      , loggedOut: true
-      , password: ''
-      , user: 'Welcome!'
-    })
-  }
-
   handleSignup(e) {
     e.preventDefault()
 
-    this.setState({
+    this.currentUser = {
       email: this.refs.email.value,
       id: Math.floor(Math.random()*1000000),
       password: this.refs.password.value,
-      user: this.refs.username.value,
-      loggedOut: false
-    })
+      user: this.refs.username.value
+    }
 
     this.refs.signupForm.reset()
   }
 
   // USER STUFF
   handleUserChange(e) {
-    const user = e.target.value;
+    const user = e.target.value
     this.changeUser(user)
+  }
+
+  handleLogin() {
+    UserActions.login()
+  }
+
+  handleLogout() {
+    UserActions.logout()
   }
 
   updateUserData(e){
@@ -95,31 +115,32 @@ export default class AccountActions extends React.Component {
     this.setState({user})
   }
   render () {
-    var userDropdown = this.state.userDropDownIsOpen ? this.renderUserDropdown() : null;
-    var userDropdownClass = this.state.loggedOut ? 'user--btn--dropdown' : 'user--btn--dropdown hasDropdown'
+    var userDropdown = this.state.ui.userDropdownIsOpen ? this.renderUserDropdown() : null
+    var userDropdownClass = this.state.ui.loggedOut ? 'user--btn--dropdown' : 'user--btn--dropdown hasDropdown'
     // Replace with database connection
     // SIGNIN/SIGNOUT
     var loggedOutClass = classNames({
-      'logout-group hidden': this.state.loggedOut,
-      'logout-group shown': !this.state.loggedOut
+      'logout-group hidden': this.state.ui.loggedOut,
+      'logout-group shown': !this.state.ui.loggedOut
     });
     var loggedInClass = classNames({
-      'login-group shown hasDropdown': this.state.loggedOut,
-      'login-group hidden': !this.state.loggedOut
+      'login-group shown hasDropdown': this.state.ui.loggedOut,
+      'login-group hidden': !this.state.ui.loggedOut
     });
     return (
       <section className='account-actions'>
+        <pre>{JSON.stringify(this.state, null, 2)}</pre>
         <div className='userLoggedOut-group'>
           <div className='account-dropdown'>
             <button className={userDropdownClass} onClick={this.handleUserClick.bind(this)}>
-              {this.state.user}
+              {this.state.users.user}
             </button>
             {userDropdown}
           </div>
         </div>
         <div className='button-group'>
           <div className={loggedInClass}>
-            <button className='login--btn' onClick={this.login.bind(this)}>Login</button>
+            <button className='login--btn' onClick={this.handleLogin.bind(this)}>Login</button>
             <button className='signup--btn'>Signup</button>
             <ul className='signup--dropdown'>
               <form ref='signupForm' onSubmit={this.handleSignup.bind(this)}>
@@ -132,7 +153,7 @@ export default class AccountActions extends React.Component {
             </ul>
           </div>
           <div className={loggedOutClass}>
-            <button className='logout--btn' onClick={this.logout.bind(this)}>Logout</button>
+            <button className='logout--btn' onClick={this.handleLogout.bind(this)}>Logout</button>
           </div>
         </div>
       </section>

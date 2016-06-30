@@ -1,10 +1,28 @@
 import dispatcher from '../dispatcher';
 
-export function createTodo(text) {
+export function createUser(text) {
   dispatcher.dispatch({
     type: 'CREATE_USER',
     text
   });
+}
+
+export function login() {
+  dispatcher.dispatch({
+    type: 'LOGIN'
+  })
+}
+
+export function logout() {
+  dispatcher.dispatch({
+    type: 'LOGOUT'
+  })
+}
+
+export function dropdownClicked() {
+  dispatcher.dispatch({
+    type: 'DROPDOWN-CLICKED'
+  })
 }
 
 // export function fetchLogin() {

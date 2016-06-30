@@ -3,35 +3,59 @@
 import { EventEmitter } from 'events';
 import dispatcher from '../dispatcher';
 
-export default class UserStore extends EventEmitter {
+class UserStore extends EventEmitter {
   constructor() {
     super()
-    this.users = [
+    this.state = [
       {
-          email: ''
-        , signupDropDownIsOpen : false
-        , userDropDownIsOpen : false
-        , id: ''
-        , loggedOut: true
-        , password: ''
-        , user: 'Welcome!'
+        users: {
+            email: ''
+          , id: ''
+          , password: ''
+          , user: 'Welcome!'
+        },
+        ui: {
+            signupDropdownIsOpen : false
+          , userDropdownIsOpen : false
+          , loggedOut: true
+        }
       }
     ];
   }
 
-  getAll() {
-    return this.users;
+  getAllUsers() {
+    return this.state.users
+  }
+
+  getUI() {
+    return this.state.ui
+  }
+
+  login() {
+    this.setState( {loggedOut: !this.state.ui.loggedOut} )
+  }
+
+  logout() {
+    this.state.users = {
+        email: ''
+      , id: ''
+      , password: ''
+      , user: 'Welcome!'
+    }
+  }
+
+  dropdownClicked() {
+    this.setState( {signupDropDownIsOpen: !this.state.ui.signupDropDownIsOpen} )
   }
 
   createUser(user, email, password) {
     const id = Date.now();
 
-    this.users.push({
+    this.state.users.push({
       id,
       user,
       email,
-      password,
-      loggedIn: false
+      password
     });
 
     this.emit('change');
@@ -43,10 +67,26 @@ export default class UserStore extends EventEmitter {
         this.createUser(action.text);
         break;
       }
+      case 'LOGIN': {
+        this.login();
+        this.emit('change');
+        break;
+      }
+      case 'LOGOUT': {
+        this.logout();
+        this.emit('change');
+        break;
+      }
+      case 'DROPDOWN-CLICKED': {
+        this.dropdownClicked();
+        this.emit('change');
+        break;
+      }
     }
   }
 
 }
 
 const userStore = new UserStore;
+export default userStore;
 dispatcher.register(userStore.handleActions.bind(userStore));
