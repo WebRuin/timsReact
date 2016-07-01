@@ -6,46 +6,52 @@ import dispatcher from '../dispatcher';
 class UserStore extends EventEmitter {
   constructor() {
     super()
-    this.state = [
-      {
-        users: {
-            email: ''
-          , id: ''
-          , password: ''
-          , user: 'Welcome!'
-        },
-        ui: {
-            signupDropdownIsOpen : false
-          , userDropdownIsOpen : false
-          , loggedOut: true
-        }
-      }
-    ];
-  }
-
-  getAllUsers() {
-    return this.state.users
-  }
-
-  getUI() {
-    return this.state.ui
-  }
-
-  login() {
-    this.setState( {loggedOut: !this.state.ui.loggedOut} )
-  }
-
-  logout() {
-    this.state.users = {
+    this.state = {
+      users: {
         email: ''
-      , id: ''
-      , password: ''
-      , user: 'Welcome!'
+        , userId: ''
+        , password: ''
+        , user: 'Welcome!'
+      },
+      ui: {
+          signupDropdownIsOpen : false
+        , userDropDownIsOpen : false
+        , loggedOut: true
+      }
     }
   }
 
+  getAllUsers() {
+    return this.state.users;
+  }
+  getAllUI() {
+    return this.state.ui;
+  }
+
+  login() {
+    const loggedChanged = !this.state.ui.loggedOut
+    this.state.ui.loggedOut = loggedChanged
+
+    this.emit('change');
+  }
+
+  logout() {
+    const loggedOutChanged = !this.state.ui.loggedOut
+    this.state.users.email = ''
+    this.state.users.userId = ''
+    this.state.users.password = ''
+    this.state.users.user = 'Welcome!'
+    this.state.ui.loggedOut = loggedOutChanged
+
+
+    this.emit('change');
+  }
+
   dropdownClicked() {
-    this.setState( {signupDropDownIsOpen: !this.state.ui.signupDropDownIsOpen} )
+    const dropdownChanged = !this.state.ui.signupDropdownIsOpen
+    this.state.ui.signupDropdownIsOpen = dropdownChanged
+    console.log(dropdownChanged)
+    this.emit('change');
   }
 
   createUser(user, email, password) {
@@ -55,7 +61,8 @@ class UserStore extends EventEmitter {
       id,
       user,
       email,
-      password
+      password,
+      loggedIn: false
     });
 
     this.emit('change');
@@ -69,19 +76,15 @@ class UserStore extends EventEmitter {
       }
       case 'LOGIN': {
         this.login();
-        this.emit('change');
         break;
       }
       case 'LOGOUT': {
         this.logout();
-        this.emit('change');
         break;
       }
-      case 'DROPDOWN-CLICKED': {
-        this.dropdownClicked();
-        this.emit('change');
-        break;
-      }
+      case 'DROPDOWN-CLICKED':
+      this.dropdownClicked();
+      break;
     }
   }
 
