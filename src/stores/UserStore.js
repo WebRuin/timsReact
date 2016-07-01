@@ -15,7 +15,7 @@ class UserStore extends EventEmitter {
       },
       ui: {
           signupDropdownIsOpen : false
-        , userDropDownIsOpen : false
+        , userDropdownIsOpen : false
         , loggedOut: true
       }
     }
@@ -47,10 +47,21 @@ class UserStore extends EventEmitter {
     this.emit('change');
   }
 
-  dropdownClicked() {
-    const dropdownChanged = !this.state.ui.signupDropdownIsOpen
-    this.state.ui.signupDropdownIsOpen = dropdownChanged
-    console.log(dropdownChanged)
+  userDropdownClicked() {
+    if (this.state.ui.signupDropdownIsOpen === true){
+      this.state.ui.signupDropdownIsOpen = false
+    }
+    const dropdownChanged = !this.state.ui.userDropdownIsOpen
+    this.state.ui.userDropdownIsOpen = dropdownChanged
+    this.emit('change');
+  }
+
+  signupDropdownClicked() {
+    if (this.state.ui.signupDropdownIsOpen === true){
+      this.state.ui.signupDropdownIsOpen = false
+    }
+    const dropdownChanged = !this.state.ui.userDropdownIsOpen
+    this.state.ui.userDropdownIsOpen = dropdownChanged
     this.emit('change');
   }
 
@@ -82,8 +93,8 @@ class UserStore extends EventEmitter {
         this.logout();
         break;
       }
-      case 'DROPDOWN-CLICKED':
-      this.dropdownClicked();
+      case 'USER-DROPDOWN-CLICKED':
+      this.userDropdownClicked();
       break;
     }
   }

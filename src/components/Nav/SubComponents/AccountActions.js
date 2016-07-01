@@ -48,7 +48,7 @@ export default class AccountActions extends React.Component {
 
   // SIGNUP DROPDOWN
   handleUserClick() {
-    UserActions.dropdownClicked()
+    UserActions.userDropdownClicked()
   }
   renderUserDropdown() {
     if (this.state.users.userId === '') {
@@ -108,7 +108,7 @@ export default class AccountActions extends React.Component {
     this.setState({user})
   }
   render () {
-    var userDropdown = this.state.ui.signupDropdownIsOpen ? this.renderUserDropdown() : null;
+    var userDropdown = this.state.ui.userDropdownIsOpen ? this.renderUserDropdown() : null;
     var userDropdownClass = this.state.ui.loggedOut ? 'user--btn--dropdown' : 'user--btn--dropdown hasDropdown'
     // Replace with database connection
     // SIGNIN/SIGNOUT
@@ -122,7 +122,7 @@ export default class AccountActions extends React.Component {
     });
     return (
       <section className='account-actions'>
-        <pre>{JSON.stringify(this.state.currentUser, null, 2)}</pre>
+        <pre>{JSON.stringify(this.state.ui, null, 2)}</pre>
         <div className='userLoggedOut-group'>
           <div className='account-dropdown'>
             <button className={userDropdownClass} onClick={this.handleUserClick.bind(this)}>

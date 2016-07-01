@@ -82,7 +82,7 @@ npm install
 ### Usage
 
 ####Start Dev Server
-`npm server`
+`node server`
 
 ```js
 npm run clean

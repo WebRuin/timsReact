@@ -19,9 +19,9 @@ export function logout() {
   })
 }
 
-export function dropdownClicked() {
+export function userDropdownClicked() {
   dispatcher.dispatch({
-    type: 'DROPDOWN-CLICKED'
+    type: 'USER-DROPDOWN-CLICKED'
   })
 }
 
