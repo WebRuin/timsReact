@@ -17,15 +17,24 @@ class UserStore extends EventEmitter {
           signupDropdownIsOpen : false
         , userDropdownIsOpen : false
         , loggedOut: true
+      },
+      currentUser: {
+          email: ''
+        , id: ''
+        , password: ''
+        , user: 'Welcome!'
       }
     }
   }
 
   getAllUsers() {
-    return this.state.users;
+    return this.state.users
   }
   getAllUI() {
-    return this.state.ui;
+    return this.state.ui
+  }
+  getCurrentUser() {
+    return this.state.currentUser
   }
 
   login() {
