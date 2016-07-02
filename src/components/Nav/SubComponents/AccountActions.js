@@ -42,7 +42,6 @@ export default class AccountActions extends React.Component {
   render () {
     return (
       <section className='account-actions'>
-        <pre className="pre"><h3>this.state.currentUser</h3> {JSON.stringify(this.state.currentUser, null, 2)}</pre>
         <UserButton
           currentUser={this.state.currentUser}
           users={this.state.users}

@@ -1,11 +1,36 @@
 'use strict';
 
 import React from 'react'
-import { Gmaps, Marker, InfoWindow} from 'react-gmaps'
 
-require('styles/Map.scss')
+import MapStore from '../../stores/MapStore'
+import { Gmaps, Marker, InfoWindow} from 'react-gmaps'
+import AddBathroomForm from './AddBathroomForm'
+
+require('styles/Map/Map.scss')
 
 export default class RenderMap extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      center_lat: '37.7749295',
+      center_lng: '-122.41941550000001',
+      bathrooms: MapStore.getBathrooms()
+    }
+  }
+
+  componentWillMount() {
+    MapStore.on('change', this.setBathrooms)
+  }
+
+  componentWillUnmount() {
+    MapStore.removeListener('change', this.setBathrooms)
+  }
+
+  setBathrooms() {
+    this.state = {
+      bathrooms: MapStore.getBathrooms()
+    }
+  }
 
   onMapCreated(map) {
     map.setOptions({
@@ -14,47 +39,48 @@ export default class RenderMap extends React.Component {
   }
 
   render() {
-    const { markers } = this.props.bathrooms;
-
-    const MarkerComponents = markers.map((markers) => {
+    const bathroomMarkers = this.state.bathrooms.map(function(bathroom) {
       return (
         <Marker
-          key={this.props.bathrooms.bathroomId}
-          lat={this.props.bathrooms.bathrooms.lat}
-          lng={this.props.bathrooms.bathrooms.lng}
-          draggable={false}
+          key={bathroom.bathroomId}
+          lat={bathroom.location_lat}
+          lng={bathroom.location_long}
+          draggable={true}
         />
       )
-    });
+    })
 
-    const { infoWindows } = this.props.bathrooms
 
-    const InfoWindowComponents = infoWindows.map((infoWindows) => {
+    const InfoWindowComponents = this.state.bathrooms.map(function(infoWindow) {
       return (
         <InfoWindow
-          key={this.props.bathrooms.bathroomId}
-          lat={this.props.bathrooms.lat + 5}
-          lng={this.props.bathrooms.lng}
+          key={infoWindow.bathroomId}
+          lat={infoWindow.location_lat + 5}
+          lng={infoWindow.location_long}
           className='mapInfo'
-          content={this.props.bathrooms.desc}
-          onCloseClick={this.bathrooms.onCloseClick}
+          content={infoWindow.bathroomName}
+          onCloseClick={infoWindow.onCloseClick}
         />
       )
     })
 
     return (
-      <Gmaps
-        width={'100vw'}
-        height={'calc(100vh - 59px)'}
-        lat={this.props.center_lat}
-        lng={this.props.center_lng}
-        zoom={12}
-        loadingMessage={'Be happy'}
-        params={{v: '3.exp', key: 'AIzaSyAhpYxW1YHLVLCI3IPcjPfOJ-ey9VCPs_Q'}}
-        onMapCreated={this.onMapCreated}>
-        { MarkerComponents }
-        { InfoWindowComponents }
-      </Gmaps>
+      <div>
+        <button className='add-bathroom--btn' />
+        <AddBathroomForm />
+        <Gmaps
+          width={'100vw'}
+          height={'calc(100vh - 59px)'}
+          lat={this.state.center_lat}
+          lng={this.state.center_lng}
+          zoom={12}
+          loadingMessage={'Be happy'}
+          params={{v: '3.exp', key: 'AIzaSyAhpYxW1YHLVLCI3IPcjPfOJ-ey9VCPs_Q'}}
+          onMapCreated={this.onMapCreated}>
+          { bathroomMarkers }
+          { InfoWindowComponents }
+        </Gmaps>
+      </div>
     );
   }
 }

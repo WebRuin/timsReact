@@ -1,8 +1,8 @@
 import dispatcher from '../dispatcher';
 
-export function createBathroom(text) {
+export function createBathroom(bathroom) {
   dispatcher.dispatch({
     type: 'CREATE_BATHROOM',
-    text
+    bathroom
   });
 }

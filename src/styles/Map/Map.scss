@@ -1,0 +1,28 @@
+.gm-style-iw {
+  color: #000;
+}
+
+.add-bathroom--btn {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  height: 60px;
+  width: 60px;
+  z-index: 3;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  border: #fff 2px solid;
+  background-color: #860505;
+  -webkit-box-shadow: 5px 5px 25px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 5px 5px 25px 0px rgba(0,0,0,0.75);
+  box-shadow: 5px 5px 25px 0px rgba(0,0,0,0.75);
+}
+.add-bathroom--btn::before{
+  color: #fff;
+  content: '+';
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}

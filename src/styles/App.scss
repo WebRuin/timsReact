@@ -20,6 +20,10 @@ body {
   display: block;
 }
 
+.map {
+  overflow: auto;
+}
+
 .index .notice {
   margin: 20px auto;
   padding: 15px 0;
