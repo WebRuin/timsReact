@@ -20,7 +20,7 @@ class UserStore extends EventEmitter {
       },
       currentUser: {
           email: ''
-        , id: ''
+        , userid: ''
         , password: ''
         , user: 'Welcome!'
       }

@@ -8,7 +8,7 @@ import NavBar from './Nav/NavBar';
 class AppComponent extends React.Component {
   render() {
     return (
-      <div className="index">
+      <div className='root'>
         <NavBar />
         {this.props.children}
       </div>

@@ -13,15 +13,7 @@ export default class UserButton extends React.Component {
     UserActions.userDropdownClicked()
   }
   renderUserDropdown() {
-    if (this.props.users.userId === '') {
-      return (
-        <div className='form--dropdown'>
-          <h1 className='highlighed'>Welcome!</h1>
-          <p>Please please login</p>
-          <pre>{JSON.stringify(this.state, null, 2)}</pre>
-        </div>
-      )
-    } else {
+    if (this.props.currentUser.userId === !null) {
       return (
         <div className='form--dropdown'>
           <ul>
