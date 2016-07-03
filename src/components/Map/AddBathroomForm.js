@@ -24,9 +24,9 @@ export default class AddBathroomForm extends React.Component {
     return (
       <aside className='addBathroomForm'>
         <form>
-          <input placeholder='Bathroom Name' ref='name' />
-          <input placeholder='Bathroom Lat' ref='lat' />
-          <input placeholder='Bathroom Long' ref='long' />
+          <input placeholder='Bathroom Name' ref='name' required />
+          <input placeholder='Bathroom Lat' ref='lat' required />
+          <input placeholder='Bathroom Long' ref='long' required />
           <button onClick={this.setBathroomData.bind(this)}>Add Bathroom</button>
         </form>
       </aside>

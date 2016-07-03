@@ -12,6 +12,7 @@ export default class RenderMap extends React.Component {
   constructor() {
     super();
     this.state = {
+      showAddBathroomForm: false,
       center_lat: '37.7749295',
       center_lng: '-122.41941550000001',
       bathrooms: MapStore.getBathrooms()
@@ -24,6 +25,11 @@ export default class RenderMap extends React.Component {
 
   componentWillUnmount() {
     MapStore.removeListener('change', this.setBathrooms)
+  }
+
+  toggleShowBathroomForm() {
+    this.state.showAddBathroomForm = !this.state.showAddBathroomForm
+    console.log('clicked:' + this.state.showAddBathroomForm)
   }
 
   setBathrooms() {
@@ -39,6 +45,8 @@ export default class RenderMap extends React.Component {
   }
 
   render() {
+    var addBathroomForm = this.state.showAddBathroomForm ? <AddBathroomForm /> : ''
+    
     const bathroomMarkers = this.state.bathrooms.map(function(bathroom) {
       return (
         <Marker
@@ -66,8 +74,8 @@ export default class RenderMap extends React.Component {
 
     return (
       <div>
-        <button className='add-bathroom--btn' />
-        <AddBathroomForm />
+        <button className='add-bathroom--btn' onClick={this.toggleShowBathroomForm.bind(this)} />
+        {addBathroomForm}
         <Gmaps
           width={'100vw'}
           height={'calc(100vh - 59px)'}

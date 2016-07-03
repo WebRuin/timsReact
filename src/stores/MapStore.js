@@ -54,7 +54,7 @@ class MapStore extends EventEmitter {
       bathroomId: bathroomId,
       bathroomName: bathroom.name,
       location_lat: bathroom.lat,
-      location_long: bathroom.long,
+      location_long: bathroom.long
     });
 
     this.emit('change');
