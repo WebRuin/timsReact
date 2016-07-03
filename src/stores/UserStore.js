@@ -52,7 +52,6 @@ class UserStore extends EventEmitter {
     this.state.users.user = 'Welcome!'
     this.state.ui.loggedOut = loggedOutChanged
 
-
     this.emit('change');
   }
 

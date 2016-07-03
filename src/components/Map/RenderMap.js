@@ -11,6 +11,7 @@ require('styles/Map/Map.scss')
 export default class RenderMap extends React.Component {
   constructor() {
     super();
+    this.setBathrooms = this.setBathrooms.bind(this)
     this.state = {
       showAddBathroomForm: false,
       center_lat: '37.7749295',
@@ -28,14 +29,15 @@ export default class RenderMap extends React.Component {
   }
 
   toggleShowBathroomForm() {
-    this.state.showAddBathroomForm = !this.state.showAddBathroomForm
-    console.log('clicked:' + this.state.showAddBathroomForm)
+    this.setState({
+      showAddBathroomForm: !this.state.showAddBathroomForm
+    })
   }
 
   setBathrooms() {
-    this.state = {
+    this.setState ({
       bathrooms: MapStore.getBathrooms()
-    }
+    })
   }
 
   onMapCreated(map) {
@@ -45,8 +47,8 @@ export default class RenderMap extends React.Component {
   }
 
   render() {
-    var addBathroomForm = this.state.showAddBathroomForm ? <AddBathroomForm /> : ''
-    
+    var addBathroomForm = this.state.showAddBathroomForm ? <AddBathroomForm handleClose={this.toggleShowBathroomForm.bind(this)} /> : ''
+
     const bathroomMarkers = this.state.bathrooms.map(function(bathroom) {
       return (
         <Marker
