@@ -44,6 +44,13 @@ class MapStore extends EventEmitter {
     ]
   }
 
+  getBathroomLat() {
+    return this.location_lat
+  }
+  getBathroomLong() {
+    return this.location_long
+  }
+
   getBathrooms() {
     return this.bathrooms
   }
@@ -68,10 +75,17 @@ class MapStore extends EventEmitter {
     }, this.setLocation(coords))
   }
 
-  setLocation(coords) {
-    console.log(coords)
-    // const BathroomCoords = coords.split(', ')
-    console.log('Coords :) : '+ BathroomCoords[0] + ' ' + BathroomCoords[1])
+  setLocation(bathroom) {
+    const bathroomId = Date.now();
+
+    this.bathrooms.push({
+      bathroomId: bathroomId,
+      bathroomName: bathroom.name,
+      location_lat: bathroom.street,
+      location_long: bathroom.city
+    })
+
+    this.emit('change');
   }
 
   createBathroom(bathroom) {
@@ -87,7 +101,7 @@ class MapStore extends EventEmitter {
   handleActions(action) {
     switch(action.type) {
       case 'CREATE_BATHROOM': {
-        this.createBathroom(action.bathroom)
+        this.setLocation(action.bathroom)
         break
       }
     }

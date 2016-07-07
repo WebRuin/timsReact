@@ -14,14 +14,14 @@ export default class RenderMap extends React.Component {
     this.setBathrooms = this.setBathrooms.bind(this)
     this.state = {
       showAddBathroomForm: false,
-      center_lat: '37.7749295',
-      center_lng: '-122.41941550000001',
+      center_lat: MapStore.getBathroomLat(),
+      center_lng: MapStore.getBathroomLong(),
       bathrooms: MapStore.getBathrooms()
     }
   }
 
   componentWillMount() {
-    MapStore.on('change', this.setBathrooms)
+    MapStore.on('change', this.setBathrooms.bind(this))
   }
 
   componentWillUnmount() {
