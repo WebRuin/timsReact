@@ -1,5 +1,6 @@
 'use strict';
 
+import geocoder from 'google-geocoder'
 import { EventEmitter } from 'events';
 import dispatcher from '../dispatcher';
 
@@ -47,16 +48,39 @@ class MapStore extends EventEmitter {
     return this.bathrooms
   }
 
+  getCoords(address) {
+    var geo = geocoder({
+      key: 'AIzaSyAhpYxW1YHLVLCI3IPcjPfOJ-ey9VCPs_Q'
+    })
+
+    var coords = geo.find({ address }, function handleResults(results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+
+        this.bathrooms.push({
+          bathroomId: bathroomId,
+          bathroomName: bathroom.name,
+          location_lat: coords[0],
+          location_long: coords[1]
+        })
+
+        return
+      }
+    }, this.setLocation(coords))
+  }
+
+  setLocation(coords) {
+    console.log(coords)
+    // const BathroomCoords = coords.split(', ')
+    console.log('Coords :) : '+ BathroomCoords[0] + ' ' + BathroomCoords[1])
+  }
+
   createBathroom(bathroom) {
     const bathroomId = Date.now();
+    const address = bathroom.street + ', ' + bathroom.city + ', ' + bathroom.state + '  ' + bathroom.zip
+    console.log(bathroom.street + bathroom.city + bathroom.city + bathroom.zip)
+    this.getCoords(address)
+    console.log('The address was: ' + address)
 
-    this.bathrooms.push({
-      bathroomId: bathroomId,
-      bathroomName: bathroom.name,
-      location_lat: bathroom.lat,
-      location_long: bathroom.long
-    });
-    
     this.emit('change');
   }
 
@@ -68,7 +92,6 @@ class MapStore extends EventEmitter {
       }
     }
   }
-
 }
 
 const mapStore = new MapStore

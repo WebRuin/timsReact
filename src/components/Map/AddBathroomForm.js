@@ -14,8 +14,10 @@ export default class AddBathroomForm extends React.Component {
 
     var data = {
       name: this.refs.name.value,
-      lat: this.refs.lat.value,
-      long: this.refs.long.value
+      street: this.refs.street.value,
+      city: this.refs.city.value,
+      state: this.refs.state.value,
+      zip: this.refs.zip.value
     }
     MapActions.createBathroom(data)
   }
@@ -23,12 +25,20 @@ export default class AddBathroomForm extends React.Component {
   render() {
     return (
       <aside className='addBathroomForm'>
-        <button onClick={this.props.handleClose}>✖</button>
         <form>
           <input placeholder='Bathroom Name' ref='name' required />
-          <input placeholder='Bathroom Lat' ref='lat' required />
-          <input placeholder='Bathroom Long' ref='long' required />
-          <button onClick={this.setBathroomData.bind(this)}>Add Bathroom</button>
+          <input placeholder='Street' ref='street' required />
+          <input placeholder='City' ref='city' required />
+          <section className='state'>
+            <input placeholder='State' ref='state' required></input>
+          </section>
+          <section className='zip'>
+            <input className='zip' placeholder='Zip' ref='zip' required />
+          </section>
+          <section>
+            <button className='bathroom-btn' onClick={this.setBathroomData.bind(this)}>Add Bathroom</button>
+            <button className='closeForm' onClick={this.props.handleClose}>Close</button>
+          </section>
         </form>
       </aside>
     );
