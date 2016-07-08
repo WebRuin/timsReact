@@ -45,10 +45,18 @@ class MapStore extends EventEmitter {
   }
 
   getBathroomLat() {
-    return this.location_lat
+    const lat = this.bathrooms[0].location_lat
+    if (lat === null) {
+    } else{
+      return lat
+    }
   }
   getBathroomLong() {
-    return this.location_long
+    const long = this.bathrooms[0].location_long
+    if (long === null) {
+    } else{
+      return long
+    }
   }
 
   getBathrooms() {
