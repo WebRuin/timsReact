@@ -65,8 +65,8 @@ export default class RenderMap extends React.Component {
       return (
         <InfoWindow
           key={infoWindow.bathroomId}
-          lat={infoWindow.location_lat + 5}
-          lng={infoWindow.location_long}
+          lat={infoWindow.location_lat}
+          lng={infoWindow.location_long + 10}
           className='mapInfo'
           content={infoWindow.bathroomName}
           onCloseClick={infoWindow.onCloseClick}
@@ -76,7 +76,6 @@ export default class RenderMap extends React.Component {
 
     return (
       <div>
-        <pre>{JSON.stringify(this.state.center_lat, null, 2)}</pre>
         <button className='add-bathroom--btn' onClick={this.toggleShowBathroomForm.bind(this)} />
         {addBathroomForm}
         <Gmaps

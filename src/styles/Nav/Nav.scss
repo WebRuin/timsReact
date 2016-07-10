@@ -23,15 +23,28 @@ body {
 }
 
 .logo {
+  position: absolute;
   text-decoration: none;
   color: white;
   font-size: 1.75rem;
   letter-spacing: 3px;
-  padding: 13px;
+  padding: 10px 6px 10px 15px;
   background-color: #860505;
+  z-index: 3;
+
+  .logo-h2 {
+    position: relative;
+    color: #00ffbc;
+    font-size: 0.65rem;
+    font-weight: bolder;
+    padding-top: 0;
+  }
 }
 
 .site-nav {
+  position: relative;
+  left: 163.656px;
+
   ul {
     list-style: none;
     display: flex;

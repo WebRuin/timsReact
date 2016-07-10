@@ -34,9 +34,9 @@ class MapStore extends EventEmitter {
         description: 'You need to be a customer to us the bathroom'
       }, {
         bathroomId: 4,
-        bathroomName: 'Berekely Starbucks',
-        location_lat: '37.871593',
-        location_long: '-122.272747',
+        bathroomName: 'Berkeley Starbucks',
+        location_lat: '37.868757',
+        location_long: '-122.268200',
         date_found: '12/16/2015',
         last_confirmed: '12/25/2015',
         description: 'You need to be a customer to us the bathroom'
