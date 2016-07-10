@@ -9,9 +9,9 @@ export default class Nav extends React.Component {
   render() {
     return (
       <div className="site-header">
-        <a href="#0" className="logo">
-          iPFreely! <br />
-          <span className='logo-h2'>Bathroom Locator</span>
+        <a href="/" className="logo">
+          <span className='logo--h1'>iPFreely!</span> <br />
+          <span className='logo--h2'>Bathroom Locator</span>
         </a>
         <nav className="site-nav">
           <ul>
