@@ -2,7 +2,7 @@
   text-transform: uppercase;
   text-decoration: none;
   color: #CDD0D0;
-  background: #14604c;
+  background: darken(#005c89, 3%);
   padding: 20px;
   display: inline-block;
   border: 0;
@@ -10,7 +10,7 @@
   cursor: pointer;
 
   &:hover {
-    color: #62DEBE;
-    background: darken(#62DEBE, 50%);
+    color: #fff;
+    background: darken(#005c89, 10%);
   }
 }

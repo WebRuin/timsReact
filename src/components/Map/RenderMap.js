@@ -76,12 +76,11 @@ export default class RenderMap extends React.Component {
 
     return (
       <div>
-        <pre>{JSON.stringify(this.state.center_lat, null, 2)}</pre>
         <button className='add-bathroom--btn' onClick={this.toggleShowBathroomForm.bind(this)} />
         {addBathroomForm}
         <Gmaps
           width={'100vw'}
-          height={'calc(100vh - 59px)'}
+          height={'100vh'}
           lat={this.state.center_lat - 12}
           lng={this.state.center_lng}
           zoom={12}
