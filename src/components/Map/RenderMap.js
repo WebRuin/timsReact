@@ -2,8 +2,8 @@
 
 import React from 'react'
 
-import MapStore from '../../stores/MapStore'
 import { Gmaps, Marker, InfoWindow} from 'react-gmaps'
+import MapStore from '../../stores/MapStore'
 import AddBathroomForm from './AddBathroomForm'
 
 require('styles/Map/Map.scss')
