@@ -1,6 +1,5 @@
 'use strict';
 
-import geocoder from 'google-geocoder'
 import { EventEmitter } from 'events';
 import dispatcher from '../dispatcher';
 
@@ -63,26 +62,6 @@ class MapStore extends EventEmitter {
     return this.bathrooms
   }
 
-  getCoords(address) {
-    var geo = geocoder({
-      key: 'AIzaSyAhpYxW1YHLVLCI3IPcjPfOJ-ey9VCPs_Q'
-    })
-
-    var coords = geo.find({ address }, function handleResults(results, status) {
-      if (status === google.maps.GeocoderStatus.OK) {
-
-        this.bathrooms.push({
-          bathroomId: bathroomId,
-          bathroomName: bathroom.name,
-          location_lat: coords[0],
-          location_long: coords[1]
-        })
-
-        return
-      }
-    }, this.setLocation(coords))
-  }
-
   setLocation(bathroom) {
     const bathroomId = Date.now();
 
@@ -92,16 +71,6 @@ class MapStore extends EventEmitter {
       location_lat: bathroom.street,
       location_long: bathroom.city
     })
-
-    this.emit('change');
-  }
-
-  createBathroom(bathroom) {
-    const bathroomId = Date.now();
-    const address = bathroom.street + ', ' + bathroom.city + ', ' + bathroom.state + '  ' + bathroom.zip
-    console.log(bathroom.street + bathroom.city + bathroom.city + bathroom.zip)
-    this.getCoords(address)
-    console.log('The address was: ' + address)
 
     this.emit('change');
   }

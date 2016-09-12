@@ -25,6 +25,13 @@ export function userDropdownClicked() {
   })
 }
 
+export function userNameChanged(text){
+  dispatcher.dispatch({
+    type: 'CREATE_USERNAME_CHANGED',
+    text
+  })
+}
+
 // export function fetchLogin() {
 //   // axios('http://someurl.com/somedataendpoint').then((data) => {
 //   //   console.log('got the data!', data);

@@ -1,12 +1,12 @@
 .signup--btn {
   text-transform: uppercase;
   text-decoration: none;
-  color: #CDD0D0;
-  background: darken(#005c89, 3%);
+  color: darken(#005c89, 10%);
+  background-color: rgba(255,255,255,0.5);
   padding: 20px;
   display: inline-block;
-  border: 0;
   outline: 0;
+  border: 0;
   cursor: pointer;
 
   &:hover {
@@ -47,7 +47,7 @@
   display: block;
   position: absolute;
   right: 0;
-  background: lighten(#0D1313, 5%);
+  background: darken(#005c89, 10%);
   width: 400px;
   padding: 1rem;
   margin: 0;
@@ -68,20 +68,17 @@
 .user--btn--dropdown {
   text-transform: uppercase;
   text-decoration: none;
-  color: #fff;
-  background: inherit;
-  padding: 20px;
+  color: darken(#005c89, 10%);
+  background-color: rgba(255,255,255,0.25);
   display: inline-block;
-  border: none;
+  padding: 20px;
   cursor: pointer;
-
-  &:focus {outline:0;}
 
   &:hover {
     color: #fff;
-    background: lighten(#0D1313, 5%);
+    background: #005c89;
   }
   &.grey {
-    background: lighten(#0D1313, 5%);
+    background: darken(#005c89, 10%);
   }
 }

@@ -1,16 +1,16 @@
 .logout--btn {
   text-transform: uppercase;
   text-decoration: none;
-  color: lighten(#5d1212, 70%);
-  background: #5d1212;
-  padding: 20px;
+  color: darken(#005c89, 10%);
+  background-color: rgba(255,255,255,0.5);
+  padding: 0.75rem;
+  margin-right: 0.5rem;
   display: inline-block;
-  border: 0;
   outline: 0;
   cursor: pointer;
 
   &:hover {
-    color: lighten(#5d1212, 70%);
-    background: #3c0c0c;
+    color: #fff;
+    background: darken(#005c89, 10%);
   }
 }

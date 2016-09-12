@@ -1,9 +1,7 @@
 'use strict';
 
-import React from 'react'
-
-import classNames from 'classnames'
-
+import React from 'react';
+import classNames from 'classnames';
 import * as UserActions from '../../../../actions/UserActions'
 
 require('styles/Nav/AccountActions.scss')
@@ -28,8 +26,9 @@ export default class AccountButtons extends React.Component {
 
   // USER STUFF
   handleUserChange(e) {
-    const user = e.target.value;
-    this.changeUser(user)
+    let newUserName = e.target.value;
+    UserActions.userNameChanged(newUserName)
+    console.log(newUserName);
   }
 
   handleLogin() {
@@ -46,7 +45,7 @@ export default class AccountButtons extends React.Component {
   }
 
   changeUser(user) {
-    this.setState({user})
+    this.props.currentUser.user = user;
   }
 
   render () {

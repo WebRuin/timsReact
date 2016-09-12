@@ -11,7 +11,7 @@ require('styles/Map/Map.scss')
 export default class RenderMap extends React.Component {
   constructor() {
     super();
-    this.setBathrooms = this.setBathrooms.bind(this)
+    this.setBathrooms = this.setBathrooms.bind(this);
     this.state = {
       showAddBathroomForm: false,
       center_lat: MapStore.getBathroomLat(),
@@ -75,7 +75,7 @@ export default class RenderMap extends React.Component {
     })
 
     return (
-      <div>
+      <div className='map-box'>
         <button className='add-bathroom--btn' onClick={this.toggleShowBathroomForm.bind(this)} />
         {addBathroomForm}
         <Gmaps

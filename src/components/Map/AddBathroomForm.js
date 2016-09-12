@@ -3,8 +3,7 @@
 import React from 'react';
 
 import  * as MapActions from '../../actions/MapActions';
-import MapStore from '../../stores/MapStore'
-import Geosuggest from 'react-geosuggest';
+import MapStore from '../../stores/MapStore';
 
 require('normalize.css/normalize.css');
 require('../../styles/Map/Map.scss');
@@ -12,7 +11,7 @@ require('../../styles/Map/Map.scss');
 export default class AddBathroomForm extends React.Component {
   constructor() {
     super();
-    this.setBathrooms = this.setBathrooms.bind(this)
+    this.setBathrooms = this.setBathrooms.bind(this);
     this.state = {
       showAddBathroomForm: false,
       current_address: '',
@@ -30,10 +29,8 @@ export default class AddBathroomForm extends React.Component {
     MapStore.removeListener('change', this.setBathrooms)
   }
 
-  toggleShowBathroomForm() {
-    this.setState({
-      showAddBathroomForm: !this.state.showAddBathroomForm
-    })
+  handleUserFormInputChange(){
+
   }
 
   setBathrooms() {
@@ -47,14 +44,16 @@ export default class AddBathroomForm extends React.Component {
 
     var data = {
       name: this.refs.name.value,
-      street: this.refs.street.value,
-      city: this.refs.city.value
+      street: this.refs.lat.value,
+      city: this.refs.long.value
     }
     MapActions.createBathroom(data)
   }
 
-  onSuggestSelect(suggest) {
-    console.log(suggest);
+  toggleShowBathroomForm() {
+    this.setState({
+      showAddBathroomForm: !this.state.showAddBathroomForm
+    })
   }
 
   render() {
@@ -62,14 +61,8 @@ export default class AddBathroomForm extends React.Component {
       <aside className='addBathroomForm'>
         <form>
           <input placeholder='Bathroom Name' ref='name' required />
-          <Geosuggest
-            placeholder="Start typing!"
-            initialValue="San Francisco"
-            onSuggestSelect={this.onSuggestSelect}
-            location={new google.maps.LatLng(this.state.center_lat, this.state.center_lng)}
-            radius="20" />
-          <input placeholder='Lat' ref='street' required />
-          <input placeholder='Long' ref='city' required />
+          <input placeholder='Lat' ref='lat' required />
+          <input placeholder='Long' ref='long' required />
           <section>
             <button className='bathroom-btn' onClick={this.setBathroomData.bind(this)}>Add Bathroom</button>
             <button className='closeForm' onClick={this.props.handleClose}>Close</button>

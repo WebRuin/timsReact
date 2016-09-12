@@ -4,6 +4,7 @@ import React from 'react';
 
 require('normalize.css/normalize.css');
 require('styles/App.scss');
+import Nav from '../Nav/SubComponents/Nav';
 
 export default class AppComponent extends React.Component {
   constructor() {
@@ -20,6 +21,7 @@ export default class AppComponent extends React.Component {
 
     return (
       <div className="page">
+        <Nav />
         <h1>About</h1>
       </div>
     );

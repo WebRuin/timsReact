@@ -87,6 +87,12 @@ class UserStore extends EventEmitter {
     this.emit('change');
   }
 
+  handleUsernameChanged(text) {
+    this.state.currentUser = text;
+    console.log(text + ' from UserStore')
+    this.emit('change');
+  }
+
   handleActions(action) {
     switch(action.type) {
       case 'CREATE_USER': {
@@ -101,12 +107,14 @@ class UserStore extends EventEmitter {
         this.logout();
         break;
       }
-      case 'USER-DROPDOWN-CLICKED':
-      this.userDropdownClicked();
-      break;
+      case 'USER_DROPDOWN_CLICKED':
+        this.userDropdownClicked();
+        break;
+      case 'CREATE_USERNAME_CHANGED':
+        this.handleUsernameChanged(action.text);
+        break;
     }
   }
-
 }
 
 const userStore = new UserStore;

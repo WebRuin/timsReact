@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router';
+import AccountActions from './AccountActions';
 
 require('styles/Nav/Nav.scss');
 
@@ -17,6 +18,7 @@ export default class Nav extends React.Component {
             <li><Link to="about" activeClassName="active">About</Link></li>
           </ul>
         </nav>
+        <AccountActions />
       </div>
     );
   }

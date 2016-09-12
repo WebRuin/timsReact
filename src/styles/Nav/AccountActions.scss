@@ -41,10 +41,11 @@
   position: relative;
   &:after {
     position: absolute;
-    color: #999;
+    color: darken(#005c89, 5%);
     content: '▼';
-    right: 0;
-    bottom: 0;
+    right: 10px;
+    bottom: 2px;
+    font-size: 0.8rem;
   }
 }
 .account-dropdown {
