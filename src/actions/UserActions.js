@@ -1,9 +1,9 @@
 import dispatcher from '../dispatcher';
 
-export function createUser(text) {
+export function createUser(user) {
   dispatcher.dispatch({
     type: 'CREATE_USER',
-    text
+    user
   });
 }
 

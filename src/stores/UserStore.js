@@ -73,30 +73,34 @@ class UserStore extends EventEmitter {
     this.emit('change');
   }
 
-  createUser(user, email, password) {
+  createUser(user) {
     const id = Date.now();
 
-    this.state.users.push({
-      id,
-      user,
-      email,
-      password,
-      loggedIn: false
-    });
+    this.state.currentUser.email = user.email;
+    this.state.currentUser.userid = user.userid;
+    this.state.currentUser.password = user.password;
+    this.state.currentUser.user = user.user;
+
+    // this.state.users.push({
+    //   id: this.currentUser.id,
+    //   user: this.currentUser.user,
+    //   email: this.currentUser.email,
+    //   password: this.currentUser.password,
+    //   loggedIn: false
+    // });
 
     this.emit('change');
   }
 
   handleUsernameChanged(text) {
-    this.state.currentUser = text;
-    console.log(text + ' from UserStore')
+    this.state.currentUser.user = text;
     this.emit('change');
   }
 
   handleActions(action) {
     switch(action.type) {
       case 'CREATE_USER': {
-        this.createUser(action.text);
+        this.createUser(action.user);
         break;
       }
       case 'LOGIN': {

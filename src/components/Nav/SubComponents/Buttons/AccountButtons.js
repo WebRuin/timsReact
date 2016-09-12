@@ -14,12 +14,12 @@ export default class AccountButtons extends React.Component {
   handleSignup(e) {
     e.preventDefault()
 
-    this.props.currentUser = {
+    UserActions.createUser({
       email: this.refs.email.value,
       id: Math.floor(Math.random()*1000000),
       password: this.refs.password.value,
       user: this.refs.username.value
-    }
+    })
 
     this.refs.signupForm.reset()
   }
@@ -28,7 +28,6 @@ export default class AccountButtons extends React.Component {
   handleUserChange(e) {
     let newUserName = e.target.value;
     UserActions.userNameChanged(newUserName)
-    console.log(newUserName);
   }
 
   handleLogin() {
@@ -71,7 +70,7 @@ export default class AccountButtons extends React.Component {
               <input ref='email' placeholder='Your Email' />
               <input ref='password' placeholder='Select Password' />
               <br />
-              <button className='signup--btn' type='submit'>Update</button>
+              <button className='signup--btn' type='submit' onClick={this.handleSignup.bind(this)}>Save</button>
             </form>
           </ul>
         </div>
