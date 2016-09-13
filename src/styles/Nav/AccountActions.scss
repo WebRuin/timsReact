@@ -37,6 +37,9 @@
   color: darken(#005c89, 30%);
 }
 
+.first-cap {
+}
+
 .hasDropdown{
   position: relative;
   &:after {
@@ -53,7 +56,9 @@
     display: block;
     position: absolute;
     right: 0;
-    background: lighten(#0D1313, 5%);
+    background: darken(rgba(80,143,173,0.7), 10%);
+    border: 2px solid darken(rgba(80,143,173,0.7), 25%);
+    border-top: 0; 
     width: 25vw;
     padding: 1rem;
     margin: 0;

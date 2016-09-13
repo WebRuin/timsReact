@@ -29,7 +29,7 @@
     text-transform: uppercase;
     text-decoration: none;
     color: #CDD0D0;
-    background: darken(#005c89, 3%);
+    background: darken(rgba(80,143,173,0.7), 3%);
     padding: 0.5rem;
     display: inline-block;
     border: 0;
@@ -47,7 +47,9 @@
   display: block;
   position: absolute;
   right: 0;
-  background: darken(#005c89, 10%);
+  background: darken(rgba(80,143,173,0.7), 10%);
+  border: 2px solid darken(rgba(80,143,173,0.7), 25%);
+  border-top: 0; 
   width: 400px;
   padding: 1rem;
   margin: 0;

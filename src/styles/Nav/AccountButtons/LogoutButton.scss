@@ -3,10 +3,11 @@
   text-decoration: none;
   color: darken(#005c89, 10%);
   background-color: rgba(255,255,255,0.5);
-  padding: 0.75rem;
-  margin-right: 0.5rem;
+  border-right: rgba(0,0,0,0.8) solid 1px;
+  padding: 20px;
   display: inline-block;
   outline: 0;
+  border: 0;
   cursor: pointer;
 
   &:hover {

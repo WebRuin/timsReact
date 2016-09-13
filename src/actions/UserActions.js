@@ -19,9 +19,15 @@ export function logout() {
   })
 }
 
-export function userDropdownClicked() {
+export function toggleUserDropdown() {
   dispatcher.dispatch({
-    type: 'USER-DROPDOWN-CLICKED'
+    type: 'TOGGLE_USER_DROPDOWN'
+  })
+}
+
+export function toggleSignupDropdown() {
+  dispatcher.dispatch({
+    type: 'TOGGLE_SIGNUP_DROPDOWN'
   })
 }
 

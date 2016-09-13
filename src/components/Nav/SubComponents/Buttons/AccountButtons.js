@@ -3,6 +3,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import * as UserActions from '../../../../actions/UserActions'
+import Store from '../../../../stores/UserStore'
+const UserState = Store.state;
 
 require('styles/Nav/AccountActions.scss')
 require('styles/Nav/AccountButtons/LoginButton.scss')
@@ -22,6 +24,8 @@ export default class AccountButtons extends React.Component {
     })
 
     this.refs.signupForm.reset()
+    this.handleSignupClick()
+    this.andleLogin()
   }
 
   // USER STUFF
@@ -43,6 +47,10 @@ export default class AccountButtons extends React.Component {
     this.refs.changeUserName.reset()
   }
 
+  handleSignupClick() {
+    UserActions.toggleSignupDropdown()
+  }
+
   changeUser(user) {
     this.props.currentUser.user = user;
   }
@@ -59,12 +67,14 @@ export default class AccountButtons extends React.Component {
       'login-group hidden': !this.props.ui.loggedOut
     });
 
+    var signupDropdown = UserState.ui.signupDropdownIsOpen ? 'signup--dropdown down' : 'signup--dropdown';
+
     return (
       <div className='button-group'>
         <div className={loggedInClass}>
           <button className='login--btn' onClick={this.handleLogin.bind(this)}>Login</button>
-          <button className='signup--btn'>Signup</button>
-          <ul className='signup--dropdown'>
+          <button className='signup--btn' onClick={this.handleSignupClick.bind(this)}>Signup</button>
+          <ul className={signupDropdown}>
             <form ref='signupForm' onSubmit={this.handleSignup.bind(this)}>
               <input ref='username' placeholder='Your Name' onChange={this.handleUserChange.bind(this)} />
               <input ref='email' placeholder='Your Email' />

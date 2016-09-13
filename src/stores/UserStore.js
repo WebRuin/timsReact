@@ -55,26 +55,8 @@ class UserStore extends EventEmitter {
     this.emit('change');
   }
 
-  userDropdownClicked() {
-    if (this.state.ui.signupDropdownIsOpen === true){
-      this.state.ui.signupDropdownIsOpen = false
-    }
-    const dropdownChanged = !this.state.ui.userDropdownIsOpen
-    this.state.ui.userDropdownIsOpen = dropdownChanged
-    this.emit('change');
-  }
-
-  signupDropdownClicked() {
-    if (this.state.ui.signupDropdownIsOpen === true){
-      this.state.ui.signupDropdownIsOpen = false
-    }
-    const dropdownChanged = !this.state.ui.userDropdownIsOpen
-    this.state.ui.userDropdownIsOpen = dropdownChanged
-    this.emit('change');
-  }
-
   createUser(user) {
-    const id = Date.now();
+    // const id = Date.now();
 
     this.state.currentUser.email = user.email;
     this.state.currentUser.userid = user.userid;
@@ -97,6 +79,28 @@ class UserStore extends EventEmitter {
     this.emit('change');
   }
 
+  toggleUserDropDown() {
+    if (this.state.ui.userDropdownIsOpen === true) {
+      this.state.ui.userDropdownIsOpen = false
+    } else {
+      this.state.ui.userDropdownIsOpen = true
+    }
+
+    console.log('clicked')
+    this.emit('change');
+  }
+
+  toggleSignupDropDown() {
+    if (this.state.ui.signupDropdownIsOpen === true) {
+      this.state.ui.signupDropdownIsOpen = false
+    } else {
+      this.state.ui.signupDropdownIsOpen = true
+    }
+
+    console.log('clicked')
+    this.emit('change');
+  }
+
   handleActions(action) {
     switch(action.type) {
       case 'CREATE_USER': {
@@ -111,9 +115,14 @@ class UserStore extends EventEmitter {
         this.logout();
         break;
       }
-      case 'USER_DROPDOWN_CLICKED':
-        this.userDropdownClicked();
+      case 'TOGGLE_USER_DROPDOWN': {
+        this.toggleUserDropDown();
         break;
+      }
+      case 'TOGGLE_SIGNUP_DROPDOWN': {
+        this.toggleSignupDropDown();
+        break;
+      }
       case 'CREATE_USERNAME_CHANGED':
         this.handleUsernameChanged(action.text);
         break;
