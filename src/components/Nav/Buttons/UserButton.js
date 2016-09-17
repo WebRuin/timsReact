@@ -2,8 +2,8 @@
 
 import React from 'react'
 
-import * as UserActions from '../../../../actions/UserActions'
-import Store from '../../../../stores/UserStore'
+import * as UserActions from '../../../actions/UserActions'
+import Store from '../../../stores/UserStore'
 const UserState = Store.state;
 
 require('styles/Nav/AccountActions.scss')
@@ -15,7 +15,7 @@ export default class UserButton extends React.Component {
     UserActions.toggleUserDropdown()
   }
   renderUserDropdown() {
-    console.log('hi');
+    // console.log('hi');
     if ( UserState.currentUser.userId === !null) {
       return (
         <div className='form--dropdown'>

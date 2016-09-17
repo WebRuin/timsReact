@@ -28,7 +28,7 @@ export default class RenderMap extends React.Component {
     MapStore.removeListener('change', this.setBathrooms)
   }
 
-  toggleShowBathroomForm() {
+  toggleBathroomForm() {
     this.setState({
       showAddBathroomForm: !this.state.showAddBathroomForm
     })
@@ -76,7 +76,7 @@ export default class RenderMap extends React.Component {
 
     return (
       <div className='map-box'>
-        <button className='add-bathroom--btn' onClick={this.toggleShowBathroomForm.bind(this)} />
+        <button className='add-bathroom--btn' onClick={this.toggleBathroomForm.bind(this)} />
         {addBathroomForm}
         <Gmaps
           width={'100vw'}

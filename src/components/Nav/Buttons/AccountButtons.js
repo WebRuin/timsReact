@@ -2,8 +2,8 @@
 
 import React from 'react';
 import classNames from 'classnames';
-import * as UserActions from '../../actions/UserActions'
-import Store from '../../stores/UserStore'
+import * as UserActions from '../../../actions/UserActions'
+import Store from '../../../stores/UserStore'
 const UserState = Store.state;
 
 require('styles/Nav/AccountActions.scss')

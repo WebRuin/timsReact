@@ -4,7 +4,7 @@ import React from 'react';
 
 require('normalize.css/normalize.css');
 require('styles/App.scss');
-import Nav from '../Nav/SubComponents/Nav';
+import Nav from '../Nav/Nav';
 
 export default class AppComponent extends React.Component {
   constructor() {

@@ -86,7 +86,7 @@ class UserStore extends EventEmitter {
       this.state.ui.userDropdownIsOpen = true
     }
 
-    console.log('clicked')
+    // console.log('clicked')
     this.emit('change');
   }
 
@@ -97,7 +97,7 @@ class UserStore extends EventEmitter {
       this.state.ui.signupDropdownIsOpen = true
     }
 
-    console.log('clicked')
+    // console.log('clicked')
     this.emit('change');
   }
 

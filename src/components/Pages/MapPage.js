@@ -2,7 +2,7 @@
 
 import React from 'react';
 import RenderMap from '../Map/RenderMap';
-import Nav from '../Nav/SubComponents/Nav';
+import Nav from '../Nav/Nav';
 
 require('normalize.css/normalize.css')
 require('styles/App.scss')

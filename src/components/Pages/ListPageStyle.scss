@@ -1,0 +1,55 @@
+h1 {
+  padding: 1.5rem 1rem 1rem 1rem;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90vw;
+  margin: 0 auto;
+}
+
+.bathroom {
+    background: inherit;
+    margin: 1rem 0 -1.6rem 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    color: #005c89;
+}
+
+.bathroom-map {
+  width: 40%;
+  min-width: 400px;
+  height: auto;
+  margin-left: auto;
+}
+
+.bathroom-list {
+  width: 60%;
+  min-width: 600px;
+  padding: 1rem;
+  background: #003a56;
+  border-bottom: 2rem solid rgba(100,158,186,0.5);
+
+  .dates {
+    display: flex;
+    align-content: space-between;
+
+    .date {
+      margin-bottom: 1rem;
+      width: 40%;
+    }
+  }
+
+  h1 {
+    padding: 0;
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 0.8rem;
+    color: #eee;
+  }
+}

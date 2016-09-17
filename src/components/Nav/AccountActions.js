@@ -1,16 +1,14 @@
 'use strict';
 
 import React from 'react';
+import UserStore from '../../stores/UserStore';
+import UserButton from './Buttons/UserButton';
+import AccountButtons from './Buttons/AccountButtons';
 
-import UserStore from '../../../stores/UserStore'
-
-import UserButton from './Buttons/UserButton'
-import AccountButtons from './Buttons/AccountButtons'
-
-require('styles/Nav/AccountActions.scss')
-require('styles/Nav/AccountButtons/LoginButton.scss')
-require('styles/Nav/AccountButtons/LogoutButton.scss')
-require('styles/Nav/AccountButtons/SignupButton.scss')
+require('styles/Nav/AccountActions.scss');
+require('styles/Nav/AccountButtons/LoginButton.scss');
+require('styles/Nav/AccountButtons/LogoutButton.scss');
+require('styles/Nav/AccountButtons/SignupButton.scss');
 
 export default class AccountActions extends React.Component {
 

@@ -6,3 +6,10 @@ export function createBathroom(bathroom) {
     bathroom
   });
 }
+
+export function setBathroomListMap(i) {
+  dispatcher.dispatch({
+    type: 'SET_BATHROOM_LIST_MAP',
+    i
+  });
+}
