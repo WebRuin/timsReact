@@ -10,7 +10,7 @@ export default class Nav extends React.Component {
   render() {
     return (
       <div className="site-header">
-        <a href="#0" className="logo">iPeeFreely!</a>
+        <a href="/"><img  className="logo"src='../static/ipfLogo.png' alt='iPeeFreelt!' /></a>
         <nav className="site-nav">
           <ul>
             <li><Link to="map" activeClassName="active">Map</Link></li>
