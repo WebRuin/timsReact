@@ -17,7 +17,7 @@ export default class RenderMap extends React.Component {
       center_lat: MapStore.getBathroomLat(),
       center_lng: MapStore.getBathroomLong(),
       bathrooms: MapStore.getBathrooms()
-    }
+    };
   }
 
   componentWillMount() {
@@ -47,7 +47,7 @@ export default class RenderMap extends React.Component {
   }
 
   render() {
-    var addBathroomForm = this.state.showAddBathroomForm ? <AddBathroomForm handleClose={this.toggleShowBathroomForm.bind(this)} /> : ''
+    var addBathroomForm = this.state.showAddBathroomForm ? <AddBathroomForm handleClose={this.toggleShowBathroomForm} /> : ''
 
     const bathroomMarkers = this.state.bathrooms.map(function(bathroom) {
       return (
